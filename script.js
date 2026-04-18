@@ -24,13 +24,39 @@ function getHumanChoice(){
     return choice;
 }
 
-let humanScore = 0;
-let computerScore = 0;
 
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
 
-function playRound(hSelect, cSelect){
+function playGame(){
+    let humanScore = 0;
+    let computerScore = 0;
+    let computerChoice
+    let humanChoice;
+
+
+    for(let i=0;i<5;i++)
+    {
+        
+        computerChoice = getComputerChoice();
+        console.log(computerChoice);
+        humanChoice = getHumanChoice();
+
+         playRound(humanChoice, computerChoice);
+         console.log(humanScore);
+         console.log(computerScore);
+    }
+
+    console.log("Game ends")
+    if(humanScore > computerScore)
+    {
+        console.log("You win")
+    }
+    else
+    {
+        console.log("Computer wins")
+    }
+   
+
+    function playRound(hSelect, cSelect){
     if(hSelect === cSelect)
     {
          console.log("it's a tie");
@@ -52,11 +78,16 @@ function playRound(hSelect, cSelect){
     }
     else
     {
-        console.log("You loose")
+        console.log("You loose");
         computerScore++;
     }
    
 }
 
-playRound(humanChoice, computerChoice);
+
+}
+
+
+playGame();
+
 
