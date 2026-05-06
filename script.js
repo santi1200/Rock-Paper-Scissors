@@ -33,7 +33,7 @@ function playGame(){
     let humanChoice;
 
 
-    for(let i=0;i<5;i++)
+    /*for(let i=0;i<5;i++)
     {
         
         computerChoice = getComputerChoice();
@@ -45,7 +45,8 @@ function playGame(){
          console.log(computerScore);
     }
 
-    console.log("Game ends")
+    console.log("Game ends")*/
+
     if(humanScore > computerScore)
     {
         console.log("You win")
@@ -87,7 +88,49 @@ function playGame(){
 
 }
 
+const body = document.querySelector("body");
+const paper = document.createElement("button");
+paper.textContent = "Paper";
+const rock = document.createElement("button")
+rock.textContent = "Rock"
+const scissors = document.createElement("button")
+scissors.textContent = "Scissors"
+
+rock.style.margin = "20px"
+
+body.appendChild(scissors)
+body.appendChild(rock)
+body.appendChild(paper)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 playGame();
-
 
