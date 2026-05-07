@@ -18,75 +18,83 @@ function getComputerChoice(){
     return choice;
 }
 
-function getHumanChoice(){
-    let choice = prompt("Pick: rock, paper or scissors ");
-    choice = choice.toLowerCase();
-    return choice;
+
+function gameOver(text)
+{
+     humanScore = 0;
+     computerScore = 0;
+     para.textContent = text;
 }
 
 
 
-function playGame(){
-    let humanScore = 0;
-    let computerScore = 0;
-    let computerChoice
-    let humanChoice;
 
 
-    /*for(let i=0;i<5;i++)
-    {
-        
-        computerChoice = getComputerChoice();
-        console.log(computerChoice);
-        humanChoice = getHumanChoice();
 
-         playRound(humanChoice, computerChoice);
-         console.log(humanScore);
-         console.log(computerScore);
-    }
 
-    console.log("Game ends")*/
+ let humanScore = 0;
+ let computerScore = 0;
 
-    if(humanScore > computerScore)
-    {
-        console.log("You win")
-    }
-    else
-    {
-        console.log("Computer wins")
-    }
+ function playRound(hSelect){
+
    
+    hScore.textContent =  "Human score: " + humanScore;
+    cScore.textContent = "Computer score: " + computerScore;
 
-    function playRound(hSelect, cSelect){
+
+
+    
+
+    cSelect = getComputerChoice();
+
+
     if(hSelect === cSelect)
     {
-         console.log("it's a tie");
+         para.textContent = "It's a tie";
     }
     else if(hSelect === "paper" && cSelect === "rock")
     {
-        console.log("You win!");
+        para.textContent = "You win"
         humanScore++; 
+        hScore.textContent =  "Human score: " + humanScore;
     }
      else if(hSelect === "rock" && cSelect === "scissors")
     {
-        console.log("You win!");
+        para.textContent = "You win"
         humanScore++; 
+        hScore.textContent = "Human score: " + humanScore;
     }
      else if(hSelect === "scissors" && cSelect === "paper")
     {
-        console.log("You win!");
+        para.textContent = "You win";
         humanScore++; 
+        hScore.textContent =  "Human score: " + humanScore;
     }
     else
     {
-        console.log("You loose");
+        para.textContent = "You loose";
         computerScore++;
+        cScore.textContent = "Computer score: " + computerScore;
     }
+
+
+    if(humanScore === 5 || computerScore === 5)
+    {
+        if(humanScore === 5)
+        {
+            gameOver("Game is over, You win");
+        }
+        else
+        {
+            gameOver("Game is over, You loose");
+
+        }
+            
+    }
+
    
 }
 
-
-}
 
 const body = document.querySelector("body");
 const paper = document.createElement("button");
@@ -95,12 +103,44 @@ const rock = document.createElement("button")
 rock.textContent = "Rock"
 const scissors = document.createElement("button")
 scissors.textContent = "Scissors"
-
 rock.style.margin = "20px"
 
-body.appendChild(scissors)
-body.appendChild(rock)
-body.appendChild(paper)
+
+
+let pick = ""
+
+paper.addEventListener("click", () => {
+    pick = "paper";
+    playRound(pick);
+})
+rock.addEventListener("click",() => {
+    pick = "rock";
+    
+    playRound(pick);
+})
+
+scissors.addEventListener("click",() =>{
+    pick = "scissors";
+    playRound(pick);
+
+} )
+
+const div = document.createElement("div");
+const para = document.createElement("p");
+const scores = document.createElement("div")
+const hScore = document.createElement("p")
+const cScore = document.createElement("p")
+
+
+
+div.appendChild(para);
+body.appendChild(div);
+body.appendChild(scissors);
+body.appendChild(rock);
+body.appendChild(paper);
+scores.appendChild(hScore)
+scores.appendChild(cScore)
+body.appendChild(scores)
 
 
 
@@ -132,5 +172,5 @@ body.appendChild(paper)
 
 
 
-playGame();
+
 
